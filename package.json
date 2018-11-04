@@ -1,0 +1,22 @@
+{
+  "name": "omdb_webhook",
+  "version": "1.0.0",
+  "description": "Webhook feito em Node que busca os detalhes de um filme",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: nenhum teste especificado\" && exit 1"
+  },
+  "keywords": [
+    "movieDb",
+    "webhook",
+    "nodejs",
+    "Andressa"
+  ],
+  "author": "Andressa Magda (Andressa)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
