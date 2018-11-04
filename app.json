@@ -1,7 +1,7 @@
 {
     "name": "omdb_webhook",
     "description": "Um webhook simples que exibe os detalhes de um filme especificado.",
-    "repository": "",
+    "repository": "https://github.com/AndressaMagda/OmdbWebHook.git",
     "keywords": [
         "filmes",
         "dialogflow",
