@@ -1,11 +1,12 @@
 {
-    "name": "omdb_webhook",
-    "description": "Um webhook simples que exibe os detalhes de um filme especificado.",
-    "repository": "https://github.com/AndressaMagda/OmdbWebHook.git",
+    "name": "dialogflow-webhook",
+    "description": "Webhook em node criado para interações com o DialogFlow da Google.",
+    "repository": "https://github.com/AndressaMagda/dialogflow-webhook.git",
     "keywords": [
-        "filmes",
-        "dialogflow",
-        "chatbot",
-        "webhook"
+        "webhook",
+        "movieDb",
+        "openweathermap",
+        "nodeJs",
+        "DialogFlow"
     ]
 }
