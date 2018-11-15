@@ -2,12 +2,14 @@
   "name": "guardiao-webhook",
   "version": "1.0.0",
   "description": "Webhook em node criado para interações com o DialogFlow da Google",
+  "repository": "https://github.com/AndressaMagda/guardiao-webhook.git",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "webhook",
+     "webhook",
     "movieDb",
     "openweathermap",
     "nodeJs",
@@ -16,7 +18,7 @@
   "author": "Andressa Magda",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
   }
 }
