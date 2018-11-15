@@ -147,6 +147,24 @@ app.post(
   }
 );
 
+app.all(
+  "/",
+  (req, res) => {
+    return res.json({
+      speech: `O servidor está funcionando...`,
+      displayText: `O servidor está funcionando...`,
+      source: "default-success"
+    });
+  },
+  error => {
+    return res.json({
+      speech: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+      displayText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+      source: "default-error"
+    });
+  }
+);
+
 app.listen(process.env.PORT || 8000, () => {
   console.log("O servidor está funcionando...");
 });
