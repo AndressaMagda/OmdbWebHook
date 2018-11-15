@@ -1,7 +1,7 @@
 {
-    "name": "dialogflow-webhook",
+    "name": "guardiao-webhook",
     "description": "Webhook em node criado para interações com o DialogFlow da Google.",
-    "repository": "https://github.com/AndressaMagda/dialogflow-webhook.git",
+    "repository": "https://github.com/AndressaMagda/guardiao-webhook.git",
     "keywords": [
         "webhook",
         "movieDb",
