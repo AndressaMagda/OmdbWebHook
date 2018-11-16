@@ -40,13 +40,13 @@ app.post(
 
                 return res.json({
                   fulfillmentText: `${dataToSend}`,
-                  fulfillmentMessages: `[{text: {text: [${dataToSend}]}}]`,
+                  fulfillmentMessages: [{text: {text: [`${dataToSend}`]}}],
                   source:  `Filme encontrado: ${movie}`
                 });
               }else{
                     return res.json({
                       fulfillmentText: `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.`,
-                      fulfillmentMessages: `[{text: {text: [ Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois. ]}}]`,
+                      fulfillmentMessages: [{text: {text: [ `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.` ]}}],
                       source:  `Filme desconhecido: ${req.body.title}.`
                     });
               }
@@ -56,7 +56,7 @@ app.post(
           error => {
             return res.json({
               fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-              fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
+              fulfillmentMessages: [{text: {text: [ `Nossa. Desculpe, mas algo deu errado. ${error}` ]}}],
               source: "movie-error-get"
             });
           }
@@ -64,7 +64,7 @@ app.post(
       } else {
         return res.json({
           fulfillmentText: `Que vergonha. Não compreendi o que falou, poderia repetir?`,
-          fulfillmentMessages: `[{text: {text: [ Que vergonha. Não compreendi o que falou, poderia repetir? ]}}]`,
+          fulfillmentMessages: [{text: {text: [ `Que vergonha. Não compreendi o que falou, poderia repetir?` ]}}],
           source: "movie-unknown-title"
         });
       }
@@ -72,7 +72,7 @@ app.post(
     error => {
       return res.json({
         fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-        fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
+        fulfillmentMessages: [{text: {text: [ `Nossa. Desculpe, mas algo deu errado. ${error}` ]}}],
         source: "movie-error-post"
       });
     }
@@ -109,14 +109,14 @@ app.post(
                 } °C por lá agora? Acabei de checar na previsão do tempo`;
                 return res.json({
                   fulfillmentText: dataToSend,
-                  fulfillmentMessages: `[{text: {text: [ ${dataToSend} ]}}]`,
+                  fulfillmentMessages: [{text: {text: [ `${dataToSend}` ]}}],
                   source: `Cidade encontrada: ${req.body.city}`
                 });
             }else{
 
               return res.json({
                 fulfillmentText: `Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo.`,
-                fulfillmentMessages: `[{text: {text: [ Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo. ]}}]`,
+                fulfillmentMessages: [{text:{text: `Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo.`}}],
                 source: `Cidade desconhecida: ${req.body.city}.`
               });
 
@@ -127,7 +127,7 @@ app.post(
         error => {
           return res.json({
             fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-            fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
+            fulfillmentMessages: [{text: {text: [ `Nossa. Desculpe, mas algo deu errado. ${error}` ]}}],
             source: "weather-error-get"
           });
         }
@@ -135,7 +135,7 @@ app.post(
     } else {
       return res.json({
         fulfillmentText: `Perdão, mas não compreendi o que falou, poderia repetir?`,
-        fulfillmentMessages: `[{text: {text: [ Perdão, mas não compreendi o que falou, poderia repetir? ]}}]`,
+        fulfillmentMessages: [{text: {text: [ `Perdão, mas não compreendi o que falou, poderia repetir?` ]}}],
         source: "weather-unknown-city"
       });
     }
@@ -143,7 +143,7 @@ app.post(
   error => {
     return res.json({
       fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-      fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
+      fulfillmentMessages: [{text: {text: [ `Nossa. Desculpe, mas algo deu errado. ${error}` ]}}],
       source: "weather-error-post"
     });
   }
@@ -154,14 +154,14 @@ app.all(
   (req, res) => {
     res.json({
       fulfillmentText: `O servidor está funcionando...`,
-      fulfillmentMessages: `[{text: {text: [ O servidor está funcionando... ]}}]`,
+      fulfillmentMessages: [{text: {text: [ `O servidor está funcionando...` ]}}],
       source: "get-success"
     });
   },
   error => {
     return res.json({
       fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-      fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
+      fulfillmentMessages: [{text: {text: [ `Nossa. Desculpe, mas algo deu errado. ${error}` ]}}],
       source: "get-error"
     });
   }
