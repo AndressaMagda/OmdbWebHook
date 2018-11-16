@@ -37,16 +37,17 @@ app.post(
                 dataToSend +=` O mesmo foi lançado em ${movie.Year} e foi dirigido por ${movie.Director}.`;
                 dataToSend+= ` Viu só, te disse que sabia tudo sobre este filme.`;
 
+
                 return res.json({
-                    speech: dataToSend,
-                    displayText: dataToSend,
-                    source: `Filme encontrado: ${movie}`
-                  });
+                  fulfillmentText: `${dataToSend}`,
+                  fulfillmentMessages: `[{text: {text: [${dataToSend}]}}]`,
+                  source:  `Filme encontrado: ${movie}`
+                });
               }else{
-                  return res.json({
-                      speech: `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.`,
-                      displayText: `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.`,
-                      source: `Filme desconhecido: ${req.body.title}.`,
+                    return res.json({
+                      fulfillmentText: `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.`,
+                      fulfillmentMessages: `[{text: {text: [ Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois. ]}}]`,
+                      source:  `Filme desconhecido: ${req.body.title}.`
                     });
               }
   
@@ -54,24 +55,24 @@ app.post(
           },
           error => {
             return res.json({
-              speech: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-              displayText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+              fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+              fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
               source: "movie-error-get"
             });
           }
         );
       } else {
         return res.json({
-          speech: `Que vergonha. Não compreendi o que falou, poderia repetir?`,
-          displayText: `Que vergonha. Não compreendi o que falou, poderia repetir?`,
+          fulfillmentText: `Que vergonha. Não compreendi o que falou, poderia repetir?`,
+          fulfillmentMessages: `[{text: {text: [ Que vergonha. Não compreendi o que falou, poderia repetir? ]}}]`,
           source: "movie-unknown-title"
         });
       }
     },
     error => {
       return res.json({
-        speech: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-        displayText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+        fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+        fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
         source: "movie-error-post"
       });
     }
@@ -106,42 +107,43 @@ app.post(
                 }, você sabia que anda fazendo ${
                   weather.main.temp
                 } °C por lá agora? Acabei de checar na previsão do tempo`;
-    
                 return res.json({
-                  speech: dataToSend,
-                  displayText: dataToSend,
+                  fulfillmentText: dataToSend,
+                  fulfillmentMessages: `[{text: {text: [ ${dataToSend} ]}}]`,
                   source: `Cidade encontrada: ${req.body.city}`
                 });
             }else{
-                return res.json({
-                    speech: `Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo.`,
-                    displayText: `Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo.`,
-                    source: `Cidade desconhecida: ${req.body.city}.`,
-                  });
+
+              return res.json({
+                fulfillmentText: `Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo.`,
+                fulfillmentMessages: `[{text: {text: [ Nunca tinha ouvido falar de uma cidade chamada ${req.body.city}. Vivendo e aprendendo. ]}}]`,
+                source: `Cidade desconhecida: ${req.body.city}.`
+              });
+
             }
 
           });
         },
         error => {
           return res.json({
-            speech: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-            displayText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+            fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+            fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
             source: "weather-error-get"
           });
         }
       );
     } else {
       return res.json({
-        speech: `Perdão, mas não compreendi o que falou, poderia repetir?`,
-        displayText: `Perdão, mas não compreendi o que falou, poderia repetir?`,
+        fulfillmentText: `Perdão, mas não compreendi o que falou, poderia repetir?`,
+        fulfillmentMessages: `[{text: {text: [ Perdão, mas não compreendi o que falou, poderia repetir? ]}}]`,
         source: "weather-unknown-city"
       });
     }
   },
   error => {
     return res.json({
-      speech: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-      displayText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+      fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+      fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
       source: "weather-error-post"
     });
   }
@@ -150,17 +152,17 @@ app.post(
 app.all(
   "/",
   (req, res) => {
-    return res.json({
-      speech: `O servidor está funcionando...`,
-      displayText: `O servidor está funcionando...`,
-      source: "default-success"
+    res.json({
+      fulfillmentText: `O servidor está funcionando...`,
+      fulfillmentMessages: `[{text: {text: [ O servidor está funcionando... ]}}]`,
+      source: "get-success"
     });
   },
   error => {
     return res.json({
-      speech: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-      displayText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
-      source: "default-error"
+      fulfillmentText: `Nossa. Desculpe, mas algo deu errado. ${error}`,
+      fulfillmentMessages: `[{text: {text: [ Nossa. Desculpe, mas algo deu errado. ${error} ]}}]`,
+      source: "get-error"
     });
   }
 );
