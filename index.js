@@ -19,8 +19,11 @@ app.use(bodyParser.json());
 app.post(
     "/movie",
     (req, res) => {
-      if (req.body.title) {
-        const reqUrl = encodeURI(`http://www.omdbapi.com/?apikey=${OMDB_KEY}&t=${req.body.title}`);
+
+      let movieTitle = req.body.queryResult.parameters['movie'];
+
+      if (movieTitle) {
+        const reqUrl = encodeURI(`http://www.omdbapi.com/?apikey=${OMDB_KEY}&t=${movieTitle}`);
         http.get(
           reqUrl,
           responseFromAPI => {
@@ -41,13 +44,14 @@ app.post(
                 return res.json({
                   fulfillmentText: `${dataToSend}`,
                   fulfillmentMessages: [{text: {text: [`${dataToSend}`]}}],
-                  source:  `Filme encontrado: ${movie}`
+                  action: `movie`,
+                  source:  `Filme encontrado: ${movie.Title}`
                 });
               }else{
                     return res.json({
                       fulfillmentText: `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.`,
                       fulfillmentMessages: [{text: {text: [ `Nunca tinha ouvi falar de um filme chamado ${req.body.title}. Vou assistir depois.` ]}}],
-                      source:  `Filme desconhecido: ${req.body.title}.`
+                      source:  `Filme Desconhecido: ${movie.Title}`
                     });
               }
   
