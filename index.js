@@ -77,7 +77,6 @@ function movieRequest(req, res) {
             return res.json({
               fulfillmentText: `${dataToSend}`,
               fulfillmentMessages: [{ text: { text: [`${dataToSend}`] } }],
-              action: `movie`,
               source: `Filme encontrado: ${movie.Title}`
             });
           } else {
