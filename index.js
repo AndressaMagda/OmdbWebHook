@@ -128,7 +128,7 @@ function movieRequest(req, res) {
 }
 
 function weatherRequest(req, res) {
-  let city = req.body.queryResult.parameters["city"];
+  let city = req.body.queryResult.parameters["geo-city"];
 
   if (city) {
     const reqUrl = encodeURI(
